@@ -1,0 +1,36 @@
+// TextSearchATL.idl : IDL source for TextSearchATL
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (TextSearchATL.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(87197941-192D-46FF-9FED-64E6901C5194),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ITextSearch : IDispatch{
+	[id(1)] HRESULT getIUknownP([in] IUnknown* pIUFileMgr);
+	[id(2)] HRESULT searchFile([in] BSTR searchString, [out, retval] BSTR* result);
+};
+[
+	uuid(118EC018-8775-49B2-969E-DF76CC40B4AC),
+	version(1.0),
+]
+library TextSearchATLLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(223633C5-1B7A-4EB4-8EB5-80DD0EAAA0F1)		
+	]
+	coclass TextSearch
+	{
+		[default] interface ITextSearch;
+	};
+};
+

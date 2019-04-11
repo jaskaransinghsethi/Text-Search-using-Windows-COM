@@ -1,0 +1,36 @@
+// FileMgrATL.idl : IDL source for FileMgrATL
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (FileMgrATL.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(34D0FC62-7F3E-4B21-9632-B1BF758ED168),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IFileMgr : IDispatch{
+	[id(1)] HRESULT getArguments([in] BSTR path, [in] BSTR patterns);
+	[id(2)] HRESULT getAllFiles([out,retval] BSTR* files);
+};
+[
+	uuid(16891E0A-CA6B-418F-9E2D-0C6FD970B802),
+	version(1.0),
+]
+library FileMgrATLLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(B5C294BF-FDD9-4BE3-8EFC-30C8F121FAF0)		
+	]
+	coclass FileMgr
+	{
+		[default] interface IFileMgr;
+	};
+};
+
